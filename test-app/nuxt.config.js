@@ -3,7 +3,7 @@ export default {
   head: {
     title: 'test-app',
     htmlAttrs: {
-      lang: 'en'
+      lang: 'ja'
     },
     meta: [
       { charset: 'utf-8' },
@@ -39,5 +39,12 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
+  },
+
+  // Docker, Hot reload active.
+  watchers: {
+    webpack: {
+      poll: true
+    }
   }
 }
