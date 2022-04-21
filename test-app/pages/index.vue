@@ -1,14 +1,11 @@
 <!-- テンプレート -->
 <template>
 	<main>
-		<!-- <div>
+		<div>
 			{{objct.message}}
 		</div>
-		<NuxtLink to="/test">{{objct.link}}</NuxtLink> -->
+		<NuxtLink to="/test">{{objct.link}}</NuxtLink>
 
-		<div>
-			<div>{{$store.state.message}}</div>
-		</div>
 	</main>
 </template>
 
@@ -18,21 +15,16 @@ import Vue from 'vue'
 
 export default 
 Vue.extend({
-
+	name: 'IndexPage',
+	data() {
+		return {
+			objct:{
+				message: 'Hello TestPaeg!',
+				link: 'ネクストページ'
+			}
+    	}
+	}
 })
-
-// export default 
-// Vue.extend({
-// 	name: 'IndexPage',
-// 	data() {
-// 		return {
-// 			objct:{
-// 				message: 'Hello TestPaeg!',
-// 				link: 'ネクストページ'
-// 			}
-//     	}
-// 	}
-// })
 
 
 </script>
