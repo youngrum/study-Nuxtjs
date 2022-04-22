@@ -1,9 +1,9 @@
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'test-app',
+    title: 'ddd-nuxt',
     htmlAttrs: {
-      lang: 'ja'
+      lang: 'en'
     },
     meta: [
       { charset: 'utf-8' },
@@ -35,22 +35,17 @@ export default {
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
+    // https://go.nuxtjs.dev/axios
+    '@nuxtjs/axios',
   ],
+
+  // Axios module configuration: https://go.nuxtjs.dev/config-axios
+  axios: {
+    // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
+    baseURL: '/',
+  },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
-    /*
-    ** You can extend webpack config here
-    */
-    transpile: [
-      /typed-vuex/,
-    ],
-  },
-
-  // Docker, Hot reload active.
-  watchers: {
-    webpack: {
-      poll: true
-    }
   }
 }

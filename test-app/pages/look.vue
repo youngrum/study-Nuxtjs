@@ -4,7 +4,7 @@
 		<div>
 			{{objct.message}}
 		</div>
-		<NuxtLink to="/look">{{objct.link}}</NuxtLink>
+		<NuxtLink to="/">{{objct.link}}</NuxtLink>
 
 	</main>
 </template>
@@ -19,8 +19,8 @@ Vue.extend({
 	data() {
 		return {
 			objct:{
-				message: 'Hello TestPaeg!',
-				link: 'Lookページ'
+				message: 'Hello LookPaege!',
+				link: 'topページ'
 			}
     	}
 	}

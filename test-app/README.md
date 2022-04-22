@@ -1,4 +1,4 @@
-# test-app
+# ddd-nuxt
 
 ## Build Setup
 
