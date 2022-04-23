@@ -1,8 +1,6 @@
 <!-- テンプレート -->
 <template>
 <main>
-<Tutorial />
-<ExamCmp />
 
 <div id="computed-basics">
   <p>Has published books:</p>
@@ -53,8 +51,6 @@
 <!-- スクリプト -->
 <script lang="ts">
 import Vue from 'vue';
-import Tutorial from '/components/Tutorial.vue';
-import ExamCmp from '/components/exam-cmp.vue';
 
 export default 
 Vue.extend({
@@ -97,8 +93,7 @@ Vue.extend({
                 "text-danger": this.error && this.error.type === "fatal"
             };
         }
-    },
-    components: { Tutorial, ExamCmp }
+    }
 })
 
 
