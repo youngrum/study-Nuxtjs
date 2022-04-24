@@ -2,8 +2,8 @@
 
 <template>
   <div class="child">
-    {{ user.name }}
-    {{ user.age }}
+    {{ user.name }}<br>
+    {{ user.age }}<br>
     {{ user.comment }}
   </div>
 </template>

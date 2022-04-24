@@ -9,6 +9,8 @@
 <script lang="ts">
 import Vue, { PropOptions } from 'vue'
 
+
+//型宣言 ~/types/User.d.ts に記述してimportも可能
 interface User {
   firstName: string 
   lastName: string
@@ -21,7 +23,7 @@ export default Vue.extend({
     user: {
       type: Object,
       required: true
-    } as PropOptions<User>
+    } as PropOptions<User> //
   },
 
   data () {
@@ -29,7 +31,6 @@ export default Vue.extend({
       message: 'This is a message'
     }
   },
-
   computed: {
     fullName (): string {
       return `${this.user.firstName} ${this.user.lastName}`
