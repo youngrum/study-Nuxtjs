@@ -1,29 +1,29 @@
 <template>
 <div>
-  Name: {{ fullName }}
+  Name: {{ fullName }}<br>
   Message: {{ message }}
 </div>
 </template>
 
 
 <script lang="ts">
-import Vue, { PropOptions } from 'vue'
+import Vue, { PropOptions } from 'vue' //PropOptions:独自の型定義をするためのオブジェクト
 
 
-//型宣言 ~/types/User.d.ts に記述してimportも可能
+//独自定義の型宣言 ~/types/User.d.ts に記述してimportも可能
 interface User {
   firstName: string 
   lastName: string
 }
 
 export default Vue.extend({
-  name: 'YourComponent',
+  name: 'UserComponent',
 
   props: {
     user: {
       type: Object,
       required: true
-    } as PropOptions<User> //
+    } as PropOptions<User> //宣言した独自定義のpropsの型を指定  
   },
 
   data () {
