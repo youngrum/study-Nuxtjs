@@ -1,54 +1,37 @@
-<template><div id="todo-list-example">
-  <form v-on:submit.prevent="addNewTodo">
-    <label for="new-todo">Add a todo</label>
-    <input
-      v-model="newTodoText"
-      id="new-todo"
-      placeholder="E.g. Feed the cat"
-    />
-    <button>Add</button>
-  </form>
-  <ul>
-    <todo-item
-      v-for="(todo, index) in todos"
-      :key="todo.id"
-      :title="todo.title"
-      @remove="todos.splice(index, 1)"
-    ></todo-item>
-  </ul>
-</div>
+<template>
+  <div>
+    <h1>TODOリスト</h1>
+    <table>
+      <tr>
+        <th>ID</th>
+        <th>TITLE</th>
+        <th>DONE</th>
+      </tr>
+      <tr v-for="todo in todos" :key="todo.id">
+        <td>{{ todo.id }}</td>
+        <td>{{ todo.title }}</td>
+        <td v-if="todo.done">✔</td>
+        <td v-else></td>
+      </tr>
+    </table>
+  </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
+import { TodoStore } from '~/store/'
+
 export default Vue.extend({
-    data() {
-    return {
-      newTodoText: '',
-      todos: [
-        {
-          id: 1,
-          title: 'Do the dishes'
-        },
-        {
-          id: 2,
-          title: 'Take out the trash'
-        },
-        {
-          id: 3,
-          title: 'Mow the lawn'
-        }
-      ],
-      nextTodoId: 4
+  async asyncData({ error }) {
+    try {
+      await TodoStore.fetchTodos()
+    } catch (e) {
+      console.log(e)
     }
   },
-  methods: {
-    addNewTodo() {
-      this.todos.push({
-        id: this.nextTodoId++,
-        title: this.newTodoText
-      })
-      this.newTodoText = ''
+  computed: {
+    todos() {
+      return TodoStore.getTodos
     }
   }
 })
