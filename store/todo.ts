@@ -1,4 +1,4 @@
-// todoモジュール作成
+// 自作モジュールの作成
 // デコレータを使用してモジュールであることや、Mutation・Actionメソッドであることを伝える
 // クラス内でなら、他のプロパティの要素にはthisでアクセス可能
 
@@ -35,8 +35,12 @@ export default class Todos extends VuexModule {
     return this.todos.length
   }
 
-// Mutation = Vuex のストアの状態を変更するための処理
-// Mutationは同期処理でなければならない = Actionとの違い
+  /**
+   * Mutation = Vuex のストアの状態を変更するための処理
+   * Mutationは同期処理でなければならない = Actionとの違い
+   * Todo を追加する
+   * @param text Todo テキスト
+   */
   @Mutation
   private add(todo: Todo) {
     this.todos.push(todo)
@@ -56,13 +60,13 @@ export default class Todos extends VuexModule {
 // Actionは非同期処理も可能 ※Mutationで複数の状態の変更が非同期に行われた場合に挙動が予測不能になるのを防ぐという意図がある
   @Action({ rawError: true })
   public async fetchTodos() {
-    const { data } = await $axios.get<Todo[]>('https://httpbin.org/get')
+    const { data } = await $axios.get<Todo[]>('/api/todos')
     this.set(data)
   }
 
   @Action({ rawError: true })
   public async createTodo(payload: Todo) {
-    const { data } = await $axios.post<Todo>('/api/todo', payload)
+    const { data } = await $axios.post<Todo>('/api/todos', payload)
     this.add(data)
   }
 

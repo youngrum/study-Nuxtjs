@@ -19,7 +19,7 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import { TodoStore } from '~/store/'
+import { TodoStore } from '~/store/' //自作モジュールの呼び出し
 
 export default Vue.extend({
   async asyncData({ error }) {
