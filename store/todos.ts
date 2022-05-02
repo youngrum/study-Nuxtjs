@@ -4,7 +4,7 @@
 
 import { Module, VuexModule, Mutation, Action } from 'vuex-module-decorators' // vuex-module-decoratorsからクラスオブジェクトをインポート
 import { $axios } from '~/utils/api' // axiosなどはNuxtアプリケーションインスタンスにアクセスするための処理 ※vuexのモジュールからはNuxtアプリケーションインスタンスにアクセス不可のため
-import { Todo } from '~/models/Todo'
+import { Todo } from '~/models/Todo' //Todoモジュールのインポート
 
 
 // モジュールクラス(class Todos extends VuexModule)を宣言 ※1
@@ -28,7 +28,7 @@ export default class Todos extends VuexModule {
     const todo: Todo = {
       // リストがない場合、id = 0
       // リストがある場合、id = リストの最終要素の id + 1
-      id: todos.length === 0 ? 0 : todos[todos.length - 1].id + 1,
+      id: todos.length === 0 ? 1 : todos[todos.length - 1].id + 1,
       text,
       done: false
     }
@@ -53,11 +53,4 @@ export default class Todos extends VuexModule {
     todo.done = !todo.done
   }
 
-  // func_increment(id: number ) {
-  //   if(id!= null && isNaN(id)) {
-  //     return id + 1;
-  //   }else{
-  //     return
-  //   }
-  // }
 }

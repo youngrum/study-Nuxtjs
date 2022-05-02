@@ -4,6 +4,7 @@
     <!-- Todo リスト -->
     <ul>
       <li v-for="(todo, i) in todos" :key="i">
+        <span>{{i}}</span>
         <input type="checkbox" :checked="todo.done" @change="toggle(todo)" />
         <span :class="{ done: todo.done }">{{ todo.text }}</span>
         <button @click="remove(todo)">削除</button>
@@ -22,20 +23,24 @@ import Vue from 'vue'
 import { Todo } from '~/models/Todo'
 // Todo リストのストアモジュールをインポート
 import { todosStore } from '~/store'
+//  
+interface HTMLEvent<T extends EventTarget> extends Event {
+  target: T;
+}
 
 export default Vue.extend({
   computed: {
+    // store（todos）を取得
     todos(): Array<Todo>{
-      // リスト（todos）を取得
       // ※ todosStore. と打つと、インテリセンス（入力補完機能）が働く
       return todosStore.todos
     }
   },
   methods: {
     // Todo の追加
-    addTodo(e): void {
-      todosStore.add(e.target.value)
-      e.target.value = ''
+    addTodo(event: HTMLEvent<HTMLButtonElement>): void {
+      todosStore.add(event.target.value) // @keyup.enter="addTodo" にてこのイベントが発火
+      event.target.value = '' // inputを空にする
     },
    // Todo の削除
     remove(todo: Todo) {
