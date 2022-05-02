@@ -3,11 +3,15 @@
 
 import { Store } from 'vuex'
 import { getModule } from 'vuex-module-decorators'
-import Todo from '~/store/todo'
+import Todos from '~/store/todos'
 
-let TodoStore: Todo
-function initialiseStores(store: Store<any>): void {
-  TodoStore = getModule(Todo, store)
+// eslint-disable-next-line import/no-mutable-exports ← 必要であれば
+let todosStore: Todos
+// let someStore: Something
+
+function initializeStores(store: Store<any>): void {
+  todosStore = getModule(Todos, store)
+  // someStore = getModule(Something, store)
 }
 
-export { initialiseStores, TodoStore}
+export { initializeStores, todosStore /*, someStore*/ }
