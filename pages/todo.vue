@@ -20,7 +20,7 @@
 <script lang="ts">
 import Vue from 'vue'
 // Todo の型定義をインポート
-import { Todo } from '~/models/Todo'
+import { Todo_mod } from '~/models/Todo'
 // Todo リストのストアモジュールをインポート
 import { todosStore } from '~/store'
 //  
@@ -31,9 +31,10 @@ interface HTMLEvent<T extends EventTarget> extends Event {
 export default Vue.extend({
   computed: {
     // computedプロパティを利用してVuexのstate（todos）を取得
-    todos(): Array<Todo>{
+    // todosはtodoモジュール型で配列を返すので "Array<Todo_mod>"型として宣言
+    todos(): Array<Todo_mod>{
       // ※ todosStore. と打つと、インテリセンス（入力補完機能）が働く
-      return todosStore.todos
+      return todosStore.list_todos
     }
   },
   methods: {
@@ -43,11 +44,11 @@ export default Vue.extend({
       event.target.value = '' // inputを空にする
     },
    // Todo の削除
-    remove(todo: Todo) {
+    remove(todo: Todo_mod) {
       todosStore.remove(todo)
     },
     // Todo の done（完了状態）切り替え
-    toggle(todo: Todo) {
+    toggle(todo: Todo_mod) {
       todosStore.toggle(todo)
     }
   }
