@@ -15,7 +15,7 @@ import { Todo } from '~/models/Todo' //Todoモジュールのインポート
   namespaced: true
 })
 export default class Todos extends VuexModule {
-  todos: Todo[] = []
+  public todos: Todo[] = []
 
   /**
    * Todo を追加する

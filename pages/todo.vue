@@ -30,7 +30,7 @@ interface HTMLEvent<T extends EventTarget> extends Event {
 
 export default Vue.extend({
   computed: {
-    // store（todos）を取得
+    // computedプロパティを利用してVuexのstate（todos）を取得
     todos(): Array<Todo>{
       // ※ todosStore. と打つと、インテリセンス（入力補完機能）が働く
       return todosStore.todos
